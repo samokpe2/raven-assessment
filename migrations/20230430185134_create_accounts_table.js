@@ -4,13 +4,14 @@
  */
 exports.up = function(knex) {
     return knex.schema
-    .createTable('users', function (table) {
+    .createTable('accounts', function (table) {
       table.increments('id');
-      table.string('name', 255).notNullable();
-      table.string('email', 255);
-      table.string('phonenumber',255);
-      table.string('password', 255);
-      table.string('role', 255);
+      table.string('account_number', 255).notNullable();
+      table.string('account_name', 255);
+      table.string('bank', 255);
+      table.smallint('isPermanent');
+      table.string('amount');
+      table.integer('user_id',255);
       table.timestamps();
     });
 };
@@ -21,5 +22,5 @@ exports.up = function(knex) {
  */
 exports.down = function(knex) {
     return knex.schema
-    .dropTable('users');
+    .dropTable('accounts');
 };

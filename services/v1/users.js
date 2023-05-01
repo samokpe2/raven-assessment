@@ -1,4 +1,4 @@
-const userModel = require('../../models/user');
+const userModel = require('../../models/users');
 const payload = require('../../helpers/payload');
 const tokengen = require('../../helpers/tokengen');
 const bcrypt = require("bcrypt")
@@ -56,4 +56,9 @@ async function login(user){
     }
 }
 
-module.exports = {create,login};
+async function getUser(user){
+    const find = await userModel.findById(user);
+    return find[0][0];
+}
+
+module.exports = {create,login, getUser};
