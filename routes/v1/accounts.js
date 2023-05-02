@@ -8,6 +8,11 @@ router.post('/', auth, async (request, response) => {
     response.status(res.status).send(res);
 })
 
+router.post('/transfer', auth, async (request, response) => {
+    const res = await accountService.transfer(request.data, request.user);
+    response.status(res.status).send(res);
+})
+
 
 
 module.exports = router;

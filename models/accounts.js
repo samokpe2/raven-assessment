@@ -12,6 +12,11 @@ async function create(account,user){
     return true;
 }
 
+async function update(amount,user){
+    const {id} = user;
+    knex.raw('UPDATE accounts SET amount = ? where user_id = ?', [amount, id]);
+}
+
 //CURRENT_DATE
 //9223372036854775
 async function find(user){
